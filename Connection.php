@@ -37,7 +37,7 @@
                             <label for=""><input type="checkbox"> Se souvenir de moi</label>
                         </div>
 
-                        <input class="bouton" type="submit" value="Se connecter">
+                        <input class="bouton_Inscription_Connection" type="submit" value="Se connecter">
 
                         <div class="register">
                             <p>Si vous n'avez pas de compte <a href="Inscription.php"> S'inscrire</a></p>

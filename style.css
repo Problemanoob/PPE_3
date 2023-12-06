@@ -1,8 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-    font-family:''poppins, 'sans-serif';
-}
 
 header{
     background-color: rgb(29, 29, 29);
@@ -27,9 +22,13 @@ p{
 }
 .bouton1{
     width: 10%;
+    float: left;
+    margin-left: 100px;
 }
 .bouton2{
     width: 14%;
+    float: right;
+    margin-right: 100px;
 }
 .espaceB{
     font-size: 500%;
@@ -39,14 +38,30 @@ p{
     margin: 10px;
     display: block;
     margin: auto;
-    float:left;
+    margin-left: 60px;
+
+
 }
 .aprox{
     width: 300px;
     margin: 10px;
     display: block;
     margin: auto;
-    float:right;
+    margin-right: 80px;
+    margin-top: 90px;
+}
+.connex{
+    justify-content: center;
+    display: flex;
+}
+.imgind{
+    justify-content: space-between;
+    display: flex;
+}
+.boutind{
+    justify-content: space-between;
+    display: flex;
+    width: auto;
 }
 .produit {
     color: white;
@@ -141,193 +156,19 @@ p{
     color:white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
-
-html, body{
-  height: 100%;
-  font-weight: 800;
-  margin: 0;
-  padding: 0;
-}
-
-
-.container {
-  display: flex;
-/*   border:1px solid red; */
-  height: 100%;
-  align-items: center;
-}
-
-svg {
-    display: block;
-    font: 10.5em 'Montserrat';
-    width: 960px;
-    height: 300px;
-    margin: 0 auto;
-}
-
-.text-copy {
-    fill: none;
-    stroke: white;
-    stroke-dasharray: 6% 29%;
-    stroke-width: 5px;
-    stroke-dashoffset: 0%;
-    animation: stroke-offset 5.5s infinite linear;
-}
-
-.text-copy:nth-child(1){
-	stroke: #4D163D;
-	animation-delay: -1;
-}
-
-.text-copy:nth-child(2){
-	stroke: #840037;
-	animation-delay: -2s;
-}
-
-.text-copy:nth-child(3){
-	stroke: #BD0034;
-	animation-delay: -3s;
-}
-
-.text-copy:nth-child(4){
-	stroke: #BD0034;
-	animation-delay: -4s;
-}
-
-.text-copy:nth-child(5){
-	stroke: #FDB731;
-	animation-delay: -5s;
-}
-
-@keyframes stroke-offset{
-	100% {stroke-dashoffset: -35%;}
-}
-
-
-section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 100%;
-    background: url('img/wp.jpg')no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
-.form-box{
-    position: relative;   
-    width: 400px;
-    height: 830px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    backdrop-filter: blur(15px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-h2{
-    font-size: 2em;
-    color: #fff;
-    text-align: center;
-}
-
-.inputbox{
-    position: relative;
-    margin: 30px 0;
-    width: 310px;
-    border-bottom: 2px solid #fff;
-}
-
-.inputbox label{
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    color: #fff;
-    font-size: 1em;
-    pointer-events: none;
-    transition: .5s;
-}
-
-input:focus ~ label,
-input:valid ~ label{
-    top: -5px;
-}
-
-.inputbox input{
-    width: 100%;
-    height: 50px;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 1em;
-    padding: 35px 0 5px;
-    color: rgb(255, 255, 255);
-}
-
-.inputbox ion-icon{
-    position: absolute;
-    right: 8px;
-    color: #fff;
-    font-size: 1.2em;
-    top: 20px;
-}
-
-.forget{
-    margin: -15px 0 15px;
-    font-size: .9em;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-}
-
-.forget label a{
-    margin-right: 3px;
-}
-
-.forget label a{
-    color: #fff;
-    text-decoration: none;
-}
-
-.forget label a:hover{
+.lien{
+    color: white;
     text-decoration: underline;
 }
+a:link 
+{ 
+ text-decoration:none; 
+} 
 
-.bouton_Inscription_Connection{
-    width: 100%;
-    height: 40px;
-    border-radius: 40px;
-    background: #fff;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: 600;
-}
-
-.bouton_Inscription_Connection:hover{
-    background: #00a25d;
-}
-
-.register{
-    font-size: .9em;
-    color: #fff;
+.tableau_evenement{
+    color: white;
     text-align: center;
-    margin: 25px 0 10px;
-}
-
-.register p a{
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-}
-
-.register p a:hover{
-    text-decoration: underline;
+    margin-top: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 50px;
 }

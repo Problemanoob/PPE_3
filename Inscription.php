@@ -47,7 +47,7 @@
                         </div>
 
                         <div>
-                            <input class="bouton" type="submit" value="S'inscrire">
+                            <input class="bouton_Inscription_Connection" type="submit" value="S'inscrire">
                         </div>
 
                         <div class="register">
