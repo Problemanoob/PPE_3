@@ -34,10 +34,15 @@ if (!$connexion) {
         
 
         <?php
-            $query = "SELECT nom_evenement FROM evenement";
+            $query = "SELECT nom_evenement, date_debut, date_fin, lieu, description, type_evenement  FROM evenement";
             $result = $connexion-> query($query);
             while ($row = $result->fetch_row()) {
-                printf("<div class='tableau_evenement'>$row[0] :</div>");
+                printf("<div class='tableau_evenement'>
+                    $row[0] Débute du $row[1] aux $row[2] 
+                    <br> 
+                    Lieu : $row[3] <br> $row[4] <br> $row[5] 
+                    <img src=\"img\depositphotos_20781645-stock-photo-field-with-a-road-gers.png\" alt=\"\">
+                </div>");
 
             }
 

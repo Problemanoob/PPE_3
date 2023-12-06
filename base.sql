@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `nom_produit` varchar(50) NOT NULL,
   `prix` double NOT NULL,
   `type_produit` varchar(30) NOT NULL,
-  'image' longblob NOT NULL,
+  'image' varchar(255) NOT NULL,
   PRIMARY KEY (`id_produit`)
 ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
