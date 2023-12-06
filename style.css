@@ -172,3 +172,21 @@ a:link
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 50px;
 }
+
+.footer {
+    background-color: #33333379; /* Couleur de fond du bandeau */
+    color: #fff; /* Couleur du texte */
+    text-align: center; /* Alignement du texte au centre */
+    padding: 20px 0; /* Espace intérieur du pied de page */
+    position: fixed; /* Fixer le pied de page en bas de la fenêtre */
+    left: 0;
+    bottom: 0;
+    width: 100%; /* Pleine largeur */
+  }
+
+.mentions {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white
+}
