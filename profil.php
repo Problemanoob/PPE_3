@@ -22,7 +22,7 @@ echo$sql;
 $result = mysqli_query($connexion, $sql);
 
 
-mysqli_fetch_assoc
+mysqli_fetch_assoc;
 if (mysqli_num_rows($result) == 1) {
     $row = mysqli_fetch_assoc($result);
     $nom = $row['nom'];
