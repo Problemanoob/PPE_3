@@ -12,5 +12,6 @@
 
     <body>
         <span class="produit">Voici nos sponsors:</span>
+        <a href="evenement.php" class="bouton-sponsors">Evenement</a>
 </body>
 </html>
