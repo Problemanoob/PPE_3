@@ -37,7 +37,7 @@ if (!$connexion) {
             $query = "SELECT nom_evenement FROM evenement";
             $result = $connexion-> query($query);
             while ($row = $result->fetch_row()) {
-                printf("<div class='tableau_evenement'>$row[0]</div>");
+                printf("<div class='tableau_evenement'>$row[0] :</div>");
 
             }
 
