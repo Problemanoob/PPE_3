@@ -5,6 +5,8 @@ $user = "admin";
 $pwd = "btssio32";
 $database = "sponsoroy";
 $connexion = mysqli_connect($hostname, $user, $pwd, $database);
+mysqli_set_charset($connexion, "utf8");
+
 
 if (!$connexion) {
     die("Connection failed: " . mysqli_connect_error());
