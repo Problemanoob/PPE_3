@@ -7,7 +7,7 @@
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="Connection.css">
         <title>Connection</title>
         <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
     </head>

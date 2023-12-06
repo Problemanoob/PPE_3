@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="Inscription.css">
         <title>Inscription</title>
         <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
     </head>
