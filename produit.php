@@ -28,13 +28,12 @@ if (!$connexion) {
     <a href="sponsors.php" class="bouton-sponsors">Sponsors</a>
 
     <?php
-    $sqlQuery = "SELECT nom_produit FROM produit;";
+    $sqlQuery = "SELECT nom_produit,prix,type_produit FROM produit;";
     $result = $connexion->query($sqlQuery);
     echo "<table border='1'>";
-            echo "<tr><th>Evenement</th></tr>";
 
             while ($row = $result->fetch_row()) {
-                printf("<div class='tableau_evenement'>$row[0] :</div>");
+                printf("<div class='tableau_evenement'>$row[0] <br> Prix du produit $row[1]€ <br> $row[2]</div>");
             }
 
             echo "</table>";
