@@ -11,13 +11,12 @@ if (!$connexion) {
 }
   
 
-
-
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
+        
         <title>GarageRoy - Produits</title>
         <link rel="stylesheet" href="style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -34,16 +33,12 @@ if (!$connexion) {
 
         <?php
             $query = "SELECT nom_evenement FROM evenement";
-            $result = $connexion->query($query);
-
-            echo "<table border='1'>";
-            echo "<tr><th>Evenement</th></tr>";
-
+            $result = $connexion-> query($query);
             while ($row = $result->fetch_row()) {
-                echo "<tr><td>" . $row[0] . "</td></tr>";
+                printf("<div class='tableau_evenement'>$row[0]</div>");
+
             }
 
-            echo "</table>";
 
             $connexion->close();
         ?>
