@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="Inscription.css">
+        <link rel="stylesheet" href="style.css">
         <title>Inscription</title>
         <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
     </head>
@@ -47,7 +47,7 @@
                         </div>
 
                         <div>
-                            <input class="bouton" type="submit" value="S'inscrire">
+                            <input class="bouton_Inscription_Connection" type="submit" value="S'inscrire">
                         </div>
 
                         <div class="register">

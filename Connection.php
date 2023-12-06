@@ -7,7 +7,7 @@
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="Connection.css">
+        <link rel="stylesheet" href="style.css">
         <title>Connection</title>
         <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
     </head>
@@ -37,7 +37,7 @@
                             <label for=""><input type="checkbox"> Se souvenir de moi</label>
                         </div>
 
-                        <input class="bouton" type="submit" value="Se connecter">
+                        <input class="bouton_Inscription_Connection" type="submit" value="Se connecter">
 
                         <div class="register">
                             <p>Si vous n'avez pas de compte <a href="Inscription.php"> S'inscrire</a></p>
