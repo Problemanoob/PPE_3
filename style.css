@@ -157,17 +157,12 @@ p{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .lien{
-    color: rgb(252, 6, 6);
+    color: rgb(255, 255, 255);
     text-decoration: underline;
-    transition: transform 0.4s
 }
 
-.lien:hover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: rgba(63, 160, 18, 0.5); /* Couleur de l'éclairage semi-transparente */
-    transition: opacity 0.3s; /* Transition de l'opacité pour l'effet d'éclairage */
+.lien:hover{
+    color: rgb(255, 187, 1);
 }
 
 a:link 
