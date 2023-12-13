@@ -15,19 +15,24 @@ session_start();
 var_dump($_SESSION);
 
 $email = $_SESSION['email'];
+$nom = isset($_SESSION['nom']) ? $_SESSION['nom'] : null;
+$prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
+$pseudo = isset($_SESSION['pseudo']) ? $_SESSION['pseudo'] : null;
 
 // Vérifier si l'email et le mot de passe sont corrects
-$sql = "SELECT * FROM utilisateur WHERE email='$email' ";
-echo$sql;
-$result = mysqli_query($connexion, $sql);
+$sql = "SELECT * FROM utilisateur WHERE email=?";
+$stmt = mysqli_prepare($connexion, $sql);
+
+$stmt->execute();
 
 
-mysqli_fetch_assoc;
 if (mysqli_num_rows($result) == 1) {
     $row = mysqli_fetch_assoc($result);
+
     $nom = $row['nom'];
     $prenom = $row['prenom'];
     $pseudo = $row['pseudo'];
+    $email = $row['email'];
 
 
 	header('Location:Client.php');
@@ -42,22 +47,27 @@ mysqli_close($connexion);
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
-    <title>GarageRoy - Produits</title>
-</head>
-<header>
-    <center><a href="index.html"><img src="img/Logo.png" alt="Logo"></a></center>
-</header>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+        <title>GarageRoy - Produits</title>
+    </head>
 
-<body>
+    <header>
+        <center><a href="index.html"><img src="img/Logo.png" alt="Logo"></a></center>
+    </header>
 
-    <h1 class="ProfilT">Votre Profil :</h1>
-    <h1 class="ProfilTXT">Nom : <?php echo $nom; ?> </h1>
-    <h1 class="ProfilTXT">Prénom : <?php echo $prenom; ?></h1>
-    <h1 class="ProfilTXT">Pseudonyme : <?php echo $pseudo; ?></h1>
-    <h1 class="ProfilTXT">Mail : <?php echo $email; ?></h1>
-    <h1 class="ProfilTXT">MDP : </h1>
-    <p>LebronJames XD</p>
+    <body>
+
+        <h1 class="ProfilT">Votre Profil :</h1>
+        <h1 class="ProfilTXT">Nom : <?php echo $nom; ?> </h1>
+        <h1 class="ProfilTXT">Prénom : <?php echo $prenom; ?></h1>
+        <h1 class="ProfilTXT">Pseudonyme : <?php echo $pseudo; ?></h1>
+        <h1 class="ProfilTXT">Mail : <?php echo $email; ?></h1>
+        <h1 class="ProfilTXT">MDP : </h1>
+        <p>LebronJames XD</p>
+
+    </body>
+
+</html>

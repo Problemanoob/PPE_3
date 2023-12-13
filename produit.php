@@ -33,7 +33,7 @@ if (!$connexion) {
     echo "<table border='1'>";
 
             while ($row = $result->fetch_row()) {
-                printf("<div class='tableau_evenement'>$row[0] <br> Prix du produit $row[1]€ <br> $row[2]</div>");
+                printf("<div class='tableau_evenement'>$row[0] <br> Prix du produit : $row[1]€ <br> Catégorie : $row[2]</div>");
             }
 
             echo "</table>";
