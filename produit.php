@@ -9,6 +9,21 @@ mysqli_set_charset($connexion, "utf8");
 if (!$connexion) {
     die("Connection failed: " . mysqli_connect_error());
 }
+
+// Traitement du formulaire
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+    // Vérifier si des produits ont été sélectionnés
+    if (isset($_POST['selected_products']) && is_array($_POST['selected_products'])) {
+        // Stocker les produits sélectionnés dans une variable de session
+        session_start();
+        $_SESSION['selected_products'] = $_POST['selected_products'];
+
+        // Rediriger vers la page sponsors.php
+        header("Location: sponsors.php");
+        exit();
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -24,21 +39,40 @@ if (!$connexion) {
 </header>
 
 <body>
-    <span class="produit">Voici nos produits:</span>
-    <a href="sponsors.php" class="bouton-sponsors">Sponsors</a>
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <span class="produit">Voici nos produits:</span>
+        <a href="sponsors.php" class="bouton-sponsors">Sponsors</a>
 
-    <?php
-    $sqlQuery = "SELECT nom_produit,prix,type_produit FROM produit;";
-    $result = $connexion->query($sqlQuery);
-    echo "<table border='1'>";
+        <?php
+        $sqlQuery = "SELECT id_produit, nom_produit, prix, type_produit FROM produit;";
+        $result = $connexion->query($sqlQuery);
 
-            while ($row = $result->fetch_row()) {
-                printf("<div class='tableau_evenement'>$row[0] <br> Prix du produit : $row[1]€ <br> Catégorie : $row[2]</div>");
-            }
+        echo "<table border='1'>";
 
-            echo "</table>";
+        $counter = 1; // Initialisez le compteur
 
-            $connexion->close();
-    ?>
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td><div class='tableau_evenement'>$row[nom_produit] <br> Prix du produit : $row[prix]€ <br> Catégorie : $row[type_produit]</div></td>";
+
+            // Générer le nom de fichier d'image en utilisant le compteur
+            $imageFileName = $counter . ".jpg";
+
+            // Afficher l'image
+            echo "<td><img src='img/$imageFileName' alt='Image du produit'></td>";
+
+            echo "<td><input type='checkbox' name='selected_products[]' value='$row[id_produit]'></td>";
+            echo "</tr>";
+
+            $counter++; // Incrémentez le compteur pour la prochaine itération
+        }
+
+        echo "</table>";
+
+        $connexion->close();
+        ?>
+
+        <input type="submit" name="submit" value="Sélectionner">
+    </form>
 </body>
 </html>

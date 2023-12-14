@@ -24,7 +24,7 @@ if (
 	]);
 	$return = $stmt -> fetch();
 	if ($pseudo == $return['pseudo'] && password_verify($mdp,$return['mdp'])){
-		header('Location: index.html');
+		header('Location: profil.php');
 	}
 	else{
 		echo("Erreur de connexion. Veuillez réessayez s'il-vous-plaît.");
