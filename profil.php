@@ -21,11 +21,23 @@ $pseudo = isset($_SESSION['pseudo']) ? $_SESSION['pseudo'] : null;
 
 // Vérifier si l'email et le mot de passe sont corrects
 
-// $statement = $connexion = "SELECT * FROM utilisateur WHERE email=?";
-$result = mysqli_prepare($connexion, sql);
+$query  = "SELECT * FROM utilisateur WHERE email=?";
+$result = mysqli_query($connexion, $query);
 // $stmt->execute();
 
+if ($result) 
+{
+    $row = mysqli_num_rows($result);
 
+    if ($row)
+    {
+        printf("Number " . $row);
+    }
+
+    mysqli_free_result($result);
+}
+
+/*
 if (mysqli_num_rows($result) == 1) {
     $row = mysqli_fetch_assoc($result);
 
@@ -40,6 +52,7 @@ if (mysqli_num_rows($result) == 1) {
 } else {
 	echo "Email ou mot de passe incorrect !";
 }
+*/
 
 mysqli_close($connexion);
 ?>
