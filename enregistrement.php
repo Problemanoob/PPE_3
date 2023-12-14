@@ -38,8 +38,6 @@ if (
         ':email' => $email,
         ':mdp' => $mdp
 
-
-
     ]);
 
     if ($return) {

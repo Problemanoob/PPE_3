@@ -56,10 +56,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             echo "<td><div class='tableau_evenement'>$row[nom_produit] <br> Prix du produit : $row[prix]€ <br> Catégorie : $row[type_produit]</div></td>";
 
             // Générer le nom de fichier d'image en utilisant le compteur
-            $imageFileName = $counter . ".jpg";
+            $imageFileName = $counter . ".png";
 
             // Afficher l'image
-            echo "<td><img src='img/$imageFileName' alt='Image du produit'></td>";
+            echo "<td><img class='imgtaille'src='img/$imageFileName' alt='Image du produit'></td>";
 
             echo "<td><input type='checkbox' name='selected_products[]' value='$row[id_produit]'></td>";
             echo "</tr>";
