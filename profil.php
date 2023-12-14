@@ -14,16 +14,16 @@ session_start();
 
 var_dump($_SESSION);
 
-$email = $_SESSION['email'];
+$email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
 $nom = isset($_SESSION['nom']) ? $_SESSION['nom'] : null;
 $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
 $pseudo = isset($_SESSION['pseudo']) ? $_SESSION['pseudo'] : null;
 
 // Vérifier si l'email et le mot de passe sont corrects
-$sql = "SELECT * FROM utilisateur WHERE email=?";
-$stmt = mysqli_prepare($connexion, $sql);
 
-$stmt->execute();
+// $statement = $connexion = "SELECT * FROM utilisateur WHERE email=?";
+$result = mysqli_prepare($connexion, sql);
+// $stmt->execute();
 
 
 if (mysqli_num_rows($result) == 1) {
