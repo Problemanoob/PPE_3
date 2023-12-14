@@ -10,15 +10,11 @@ if (!$connexion) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Traitement du formulaire
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    // Vérifier si des produits ont été sélectionnés
     if (isset($_POST['selected_products']) && is_array($_POST['selected_products'])) {
-        // Stocker les produits sélectionnés dans une variable de session
         session_start();
         $_SESSION['selected_products'] = $_POST['selected_products'];
 
-        // Rediriger vers la page sponsors.php
         header("Location: sponsors.php");
         exit();
     }
@@ -49,22 +45,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
         echo "<table border='1'>";
 
-        $counter = 1; // Initialisez le compteur
+        $counter = 1;
 
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td><div class='tableau_evenement'>$row[nom_produit] <br> Prix du produit : $row[prix]€ <br> Catégorie : $row[type_produit]</div></td>";
 
-            // Générer le nom de fichier d'image en utilisant le compteur
             $imageFileName = $counter . ".png";
 
-            // Afficher l'image
             echo "<td><img class='imgtaille'src='img/$imageFileName' alt='Image du produit'></td>";
 
             echo "<td><input type='checkbox' name='selected_products[]' value='$row[id_produit]'></td>";
             echo "</tr>";
 
-            $counter++; // Incrémentez le compteur pour la prochaine itération
+            $counter++;
         }
 
         echo "</table>";
@@ -72,7 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         $connexion->close();
         ?>
 
-        <input type="submit" name="submit" value="Sélectionner">
     </form>
 </body>
 </html>
