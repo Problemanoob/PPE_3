@@ -9,6 +9,7 @@ mysqli_set_charset($connexion, "utf8");
 if (!$connexion) {
     die("Connection failed: " . mysqli_connect_error());
 }
+echo var_dump($_POST);
 ?>
 
 <!DOCTYPE html>
