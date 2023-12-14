@@ -49,11 +49,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
         echo "<table border='1'>";
 
+        $counter = 1; // Initialisez le compteur
+
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td><div class='tableau_evenement'>$row[nom_produit] <br> Prix du produit : $row[prix]€ <br> Catégorie : $row[type_produit]</div></td>";
+
+            // Générer le nom de fichier d'image en utilisant le compteur
+            $imageFileName = $counter . ".jpg";
+
+            // Afficher l'image
+            echo "<td><img src='img/$imageFileName' alt='Image du produit'></td>";
+
             echo "<td><input type='checkbox' name='selected_products[]' value='$row[id_produit]'></td>";
             echo "</tr>";
+
+            $counter++; // Incrémentez le compteur pour la prochaine itération
         }
 
         echo "</table>";
