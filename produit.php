@@ -10,9 +10,10 @@ if (!$connexion) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+session_start(); // Assurez-vous que session_start() est appelé au début du script
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     if (isset($_POST['selected_products']) && is_array($_POST['selected_products'])) {
-        session_start();
         $_SESSION['selected_products'] = $_POST['selected_products'];
 
         header("Location: sponsors.php");
@@ -53,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
             $imageFileName = $counter . ".png";
 
-            echo "<td><img class='imgtaille'src='img/$imageFileName' alt='Image du produit'></td>";
+            echo "<td><img class='imgtaille' src='img/$imageFileName' alt='Image du produit'></td>";
 
             echo "<td><input type='checkbox' name='selected_products[]' value='$row[id_produit]'></td>";
             echo "</tr>";
