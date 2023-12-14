@@ -24,12 +24,24 @@ p{
     width: 10%;
     float: left;
     margin-left: 100px;
+    transition: transform 0.3s ease-in-out;
 }
+
+.bouton1:hover{
+    transform: scale(1.1);
+}
+
 .bouton2{
     width: 14%;
     float: right;
     margin-right: 100px;
+    transition: transform 0.3s ease-in-out;
 }
+
+.bouton2:hover{
+    transform: scale(1.1);
+}
+
 .espaceB{
     font-size: 500%;
 }
@@ -39,8 +51,22 @@ p{
     display: block;
     margin: auto;
     margin-left: 60px;
+    animation: moveLeftToRight 4s linear infinite;
+}
 
-
+@keyframes moveLeftToRight {
+    0% {
+        left: 0; /* Début de la translation à gauche */
+        transform: rotate(-10deg); /* Rotation initiale de l'image */
+    }
+    50% {
+        left: calc(100% - 200px); /* Milieu de la translation à droite */
+        transform: rotate(10deg); /* Rotation de mi-parcours de l'image */
+    }
+    100% {
+        left: 0; /* Fin de la translation à gauche */
+        transform: rotate(-10deg); /* Rotation finale de l'image */
+    }
 }
 .aprox{
     width: 300px;
@@ -49,7 +75,24 @@ p{
     margin: auto;
     margin-right: 80px;
     margin-top: 90px;
+    animation: moveLeftToRight 4s linear infinite;
 }
+
+@keyframes moveLeftToRight {
+    0% {
+        left: 0; 
+        transform: rotate(-10deg);
+    }
+    50% {
+        left: calc(100% - 200px); 
+        transform: rotate(10deg); 
+    }
+    100% {
+        left: 0; 
+        transform: rotate(-10deg); 
+    }
+}
+
 .connex{
     justify-content: center;
     display: flex;
@@ -219,4 +262,13 @@ footer a:hover {
 }
 .imgtaille{
     width: 200px;
+}
+
+.logoprofil {
+    position: absolute;
+    top: 35px; /* Ajuste la position verticale (à partir du haut) */
+    right: 35px; /* Ajuste la position horizontale (à partir de la droite) */
+    width: 100px; /* Ajuste la largeur de l'image */
+    height: auto; /* Garde le ratio hauteur/largeur de l'image */
+    width: 50px;
 }
