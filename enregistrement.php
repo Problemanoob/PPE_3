@@ -33,10 +33,6 @@ if (
         ':pseudo' => $pseudo,
         ':email' => $email,
         ':mdp' => $mdp
-<<<<<<< HEAD
-=======
-
->>>>>>> 4555fe9a4a67dfd5ed9dbdb64d5385cfd5532467
     ]);
 
     if ($return) {
