@@ -10,19 +10,64 @@ if (!$connexion) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Traitement du formulaire
+// Traitement du formulaire de recherche
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    // Vérifier si des produits ont été sélectionnés
-    if (isset($_POST['selected_products']) && is_array($_POST['selected_products'])) {
-        // Stocker les produits sélectionnés dans une variable de session
-        session_start();
-        $_SESSION['selected_products'] = $_POST['selected_products'];
+    $searchTerm = isset($_POST['search']) ? $_POST['search'] : '';
 
-        // Rediriger vers la page sponsors.php
-        header("Location: sponsors.php");
-        exit();
-    }
+    // filtrer les produits 
+    $sqlQuery = "SELECT id_produit, nom_produit, prix, type_produit FROM produit WHERE nom_produit LIKE '%$searchTerm%';";
+} else {
+    
+    $sqlQuery = "SELECT id_produit, nom_produit, prix, type_produit FROM produit;";
 }
+
+
+// Filtre par destination
+if (isset($_POST['search_name_Produit'])) {
+    $destination = $_POST['search_name_Produit'];
+    $query .= " AND nom_produit like '%$destination%'";
+}
+
+// Filtre par date de départ
+if (!empty($_POST['PrixMin'])) {
+    $date_depart = $_POST['PrixMin'];
+    $query .= " AND PrixMin >= '$date_depart'";
+}
+
+// Filtre par date de fin
+if (!empty($_POST['PrixMax'])) {
+    $date_fin = $_POST['PrixMax'];
+    $query .= " AND PrixMax <= '$date_fin'";
+}
+
+// Filtre par prix
+if (!empty($_POST['TypeProduit'])) {
+    $prix = $_POST['TypeProduit'];
+    $query .= " AND TypeProduit <= $prix";
+}
+
+//Préparation de la requête par PDO
+$statment = $mysqlConnection->prepare($query);
+//Execution de la requête
+if ($statment->execute()) {
+  //le resultat est retourné sous forme de tableau
+  $voyages = $statment->fetchAll();
+  // Affichage des résultats
+if (true) {
+    while ($row = $statment->fetchAll()) {
+        echo "Nom Produit: " . $row["search_name_Produit"] . "<br>";
+        echo "Date Minimal: " . $row["PrixMin"] . "<br>";
+        echo "Date Maximal: " . $row["PrixMax"] . "<br>";
+        echo "Type: " . $row["TypeProduit"] . "<br>";
+        echo "<br>";
+    }
+} else {
+    echo "Aucun résultat trouvé.";
+}
+
+}
+
+$result = $connexion->query($sqlQuery);
 
 ?>
 
@@ -39,10 +84,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 </header>
 
 <body>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <span class="produit">Voici nos produits:</span>
+
+<span class="produit">Voici nos produits:</span>
         <a href="sponsors.php" class="bouton-sponsors">Sponsors</a>
 
+    <!-- Barre de recherche -->
+    <form action="Accueil.php" method="POST">
+        <div class="rechercherProduits">
+
+                <h1>Chercher les Produits</h1>
+
+                <div class="search_name_Produit">
+                    <input name="search_name_Produit" type="text" placeholder="Nom Produit" style="height:30px;" value="" required>
+                </div>
+
+                <div class="PrixMin">
+                    <input type="text" placeholder="Prix Minimal" style="height:30px;" value="" >
+                </div>
+
+                <div class="PrixMax">
+                    <input type="text" placeholder="Prix Maximal" style="height:30px;" value="" >
+                </div>
+
+                <div class="TypeProduit">
+                    <input type="text" placeholder="Produit" style="height:30px;" value="" >
+                </div>
+
+                <div class="Search">
+                    <button class="buton_search" type="submit" style="height:30px;">Recherche<i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+        </div>
+    </form>
+
+
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <?php
         $sqlQuery = "SELECT id_produit, nom_produit, prix, type_produit FROM produit;";
         $result = $connexion->query($sqlQuery);

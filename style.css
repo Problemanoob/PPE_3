@@ -217,3 +217,37 @@ footer a:hover {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: white
 }
+
+.Search{
+    margin-left: 500px;
+    margin-top: 20px;
+}
+
+.Search, .buton_search{
+    display: inline-block;
+    margin-top: 10px;
+}
+
+h1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    font-size: 30px;
+    color: rgb(255, 123, 0);
+    text-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+
+}
+
+.rechercherProduits{
+    margin-right: 450px;
+    margin-left: 450px;
+    margin-top: 100px;
+    background-color: rgb(218, 224, 122);
+    background: transparent;
+}
+
+.search_name_Produit, .PrixMin, .PrixMax, .TypeProduit, .Search{
+    display: inline-block;
+    margin-bottom: 15px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
