@@ -124,11 +124,20 @@ $result = $connexion->query($sqlQuery);
 
         echo "<table border='1'>";
 
+        $counter = 1;
+
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td><div class='tableau_evenement'>$row[nom_produit] <br> Prix du produit : $row[prix]€ <br> Catégorie : $row[type_produit]</div></td>";
+
+            $imageFileName = $counter . ".png";
+
+            echo "<td><img class='imgtaille' src='img/$imageFileName' alt='Image du produit'></td>";
+
             echo "<td><input type='checkbox' name='selected_products[]' value='$row[id_produit]'></td>";
             echo "</tr>";
+
+            $counter++;
         }
 
         echo "</table>";
@@ -136,7 +145,6 @@ $result = $connexion->query($sqlQuery);
         $connexion->close();
         ?>
 
-        <input type="submit" name="submit" value="Sélectionner">
     </form>
 </body>
 </html>
