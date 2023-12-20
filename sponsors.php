@@ -12,7 +12,7 @@ if (!$connexion) {
 
 session_start(); // Démarrez la session au début de votre fichier
 
-echo var_dump($_POST);
+
 
 ?>
 
