@@ -12,16 +12,64 @@ if (!$connexion) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-session_start(); // Assurez-vous que session_start() est appelé au début du script
-
+// Traitement du formulaire de recherche
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    if (isset($_POST['selected_products']) && is_array($_POST['selected_products'])) {
-        $_SESSION['selected_products'] = $_POST['selected_products'];
+    $searchTerm = isset($_POST['search']) ? $_POST['search'] : '';
 
-        header("Location: sponsors.php");
-        exit();
-    }
+    // filtrer les produits 
+    $sqlQuery = "SELECT id_produit, nom_produit, prix, type_produit FROM produit WHERE nom_produit LIKE '%$searchTerm%';";
+} else {
+    
+    $sqlQuery = "SELECT id_produit, nom_produit, prix, type_produit FROM produit;";
 }
+
+
+// Filtre par destination
+if (isset($_POST['search_name_Produit'])) {
+    $destination = $_POST['search_name_Produit'];
+    $query .= " AND nom_produit like '%$destination%'";
+}
+
+// Filtre par date de départ
+if (!empty($_POST['PrixMin'])) {
+    $date_depart = $_POST['PrixMin'];
+    $query .= " AND PrixMin >= '$date_depart'";
+}
+
+// Filtre par date de fin
+if (!empty($_POST['PrixMax'])) {
+    $date_fin = $_POST['PrixMax'];
+    $query .= " AND PrixMax <= '$date_fin'";
+}
+
+// Filtre par prix
+if (!empty($_POST['TypeProduit'])) {
+    $prix = $_POST['TypeProduit'];
+    $query .= " AND TypeProduit <= $prix";
+}
+
+//Préparation de la requête par PDO
+$statment = $mysqlConnection->prepare($query);
+//Execution de la requête
+if ($statment->execute()) {
+  //le resultat est retourné sous forme de tableau
+  $voyages = $statment->fetchAll();
+  // Affichage des résultats
+if (true) {
+    while ($row = $statment->fetchAll()) {
+        echo "Nom Produit: " . $row["search_name_Produit"] . "<br>";
+        echo "Date Minimal: " . $row["PrixMin"] . "<br>";
+        echo "Date Maximal: " . $row["PrixMax"] . "<br>";
+        echo "Type: " . $row["TypeProduit"] . "<br>";
+        echo "<br>";
+    }
+} else {
+    echo "Aucun résultat trouvé.";
+}
+
+}
+
+$result = $connexion->query($sqlQuery);
 
 ?>
 

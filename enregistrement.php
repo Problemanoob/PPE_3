@@ -9,9 +9,6 @@ try {
     $mysqlConnection = new PDO('mysql:host=' . $hostname . ';dbname=' . $database, $user, $pwd);
     $sqlQuery = "INSERT INTO utilisateurs (nom,prenom,pseudo,email,mdp) VALUES (:nom,:prenom,:pseudo,:email,:mdp);";
     $stmt = $mysqlConnection->prepare($sqlQuery);
-
-
-
 } catch (PDOException $error) {
     echo 'Échec de la connexion : ' . $error->getMessage();
 }
@@ -30,20 +27,22 @@ if (
     $email = $_POST["email"];
     $mdp = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-
     $return = $stmt->execute([
         ':nom' => $nom,
         ':prenom' => $prenom,
         ':pseudo' => $pseudo,
         ':email' => $email,
         ':mdp' => $mdp
-
     ]);
 
     if ($return) {
 
         session_start();
         $_SESSION['email'] = $email;
+        $_SESSION['nom'] = $nom;
+        $_SESSION['prenom'] = $prenom;
+        $_SESSION['pseudo'] = $pseudo;
+        $_SESSION['mdp'] = $mdp;
         
 
         header('Location: profil.php');
