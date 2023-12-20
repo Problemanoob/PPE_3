@@ -12,6 +12,8 @@ if (!$connexion) {
 
 session_start();
 
+
+
 $email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
 $nom = isset($_SESSION['nom']) ? $_SESSION['nom'] : null;
 $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
@@ -66,8 +68,7 @@ mysqli_close($connexion);
         <h1 class="ProfilTXT">Prénom : <?php echo $prenom; ?></h1>
         <h1 class="ProfilTXT">Pseudonyme : <?php echo $pseudo; ?></h1>
         <h1 class="ProfilTXT">Mail : <?php echo $email; ?></h1>
-        <h1 class="ProfilTXT">MDP : </h1>
-
+        
     </body>
 
 </html>
