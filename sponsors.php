@@ -31,7 +31,7 @@ session_start(); // Démarrez la session au début de votre fichier
 <body>
     <form method="post" action="sponsors.php">
         <span class="produit">Voici nos sponsors:</span>
-        <a href="evenement.php" class="bouton-sponsors">Evenement</a>
+        <a href="index.html" class="bouton-sponsors">Terminé</a>
 
         <?php
         $query = "SELECT prenom, nom, nationalite, categorie, voiture FROM sponsor";
