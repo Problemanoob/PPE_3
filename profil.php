@@ -79,7 +79,6 @@ mysqli_close($connexion);
         <h1 class="ProfilTXT">Pseudonyme : <?php echo $pseudo; ?></h1>
         <h1 class="ProfilTXT">Mail : <?php echo $email; ?></h1>
         <h1 class="ProfilTXT">MDP : </h1>
-        <p>LebronJames XD</p>
 
     </body>
 
