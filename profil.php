@@ -58,8 +58,6 @@ mysqli_close($connexion);
     
     <body>
 
-        <span class="produit">Voici nos produits:</span>
-        <a href="sponsors.php" class="bouton-sponsors">Sponsors</a>
     
         <h1 class="ProfilT">Votre Profil :</h1>
         <h1 class="ProfilTXT">Nom : <?php echo $nom; ?> </h1>
