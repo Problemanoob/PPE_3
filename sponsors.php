@@ -12,8 +12,6 @@ if (!$connexion) {
 
 session_start(); // Démarrez la session au début de votre fichier
 
-echo var_dump($_POST);
-
 ?>
 
 <!DOCTYPE html>
@@ -31,34 +29,40 @@ echo var_dump($_POST);
 </header>
 
 <body>
-    <span class="produit">Voici nos sponsors:</span>
-    <a href="evenement.php" class="bouton-sponsors">Evenement</a>
+    <form method="post" action="sponsors.php">
+        <span class="produit">Voici nos sponsors:</span>
+        <a href="evenement.php" class="bouton-sponsors">Evenement</a>
 
-    <?php
-    $query = "SELECT prenom, nom, nationalite, categorie, voiture FROM sponsor";
-    $result = $connexion->query($query);
+        <?php
+        $query = "SELECT prenom, nom, nationalite, categorie, voiture FROM sponsor";
+        $result = $connexion->query($query);
 
-    echo "<form method='post' action='sponsors.php'>";
+        echo "<table border='1'>";
 
-    // Récupérer les produits sélectionnés depuis la session
-    $selectedProducts = isset($_SESSION['selected_products']) ? $_SESSION['selected_products'] : array();
+        while ($row = $result->fetch_row()) {
+            echo "<tr>";
+            echo "<td><div class='tableau_evenement'>
+                    $row[0] $row[1] $row[2] 
+                    <br> 
+                    $row[3] <br> $row[4] <br></div></td>";
 
-    while ($row = $result->fetch_row()) {
-        echo "<div class='tableau_evenement'>
-                $row[0] $row[1] $row[2] 
-                <br> 
-                $row[3] <br> $row[4] <br>";
+            // Utilisez $_SESSION['selected_products'] au lieu de $_POST['selected_products']
+            if (isset($_SESSION['selected_products'])) {
+                foreach ($_SESSION['selected_products'] as $selectedProduct) {
+                    echo "<td><input type='checkbox' name='selected_products[]' value='$selectedProduct' checked></td>";
+                }
+            } else {
+                echo "<td><input type='checkbox' name='selected_products[]' value=''></td>";
+            }
 
-        // Afficher les cases à cocher avec les produits sélectionnés pré-cochés
-        foreach ($selectedProducts as $selectedProduct) {
-            echo "<input type='checkbox' name='selected_products[]' value='$selectedProduct' checked>";
+            echo "</tr>";
         }
 
-        echo "</div>";
-    }
+        echo "</table>";
+        ?>
+    </form>
 
-    echo "<input type='submit' name='submit' value='Envoyer'></form>";
-
+    <?php
     $connexion->close();
     ?>
 </body>
