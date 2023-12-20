@@ -37,12 +37,13 @@ if (!$connexion) {
             $query = "SELECT nom_evenement, date_debut, date_fin, lieu, description, type_evenement  FROM evenement";
             $result = $connexion-> query($query);
             while ($row = $result->fetch_row()) {
-                printf("<div class='tableau_evenement'>
-                    $row[0] Débute du $row[1] aux $row[2] 
-                    <br> 
-                    Lieu : $row[3] <br> $row[4] <br> $row[5] 
+                echo "<tr>";
+                echo "<td><div class='tableau_evenement'>
+                        $row[0] Débute du $row[1] aux $row[2] 
+                        <br> 
+                        Lieu : $row[3] <br> $row[4] <br> $row[5]; 
                     
-                </div>");
+                </div>";
 
             }
 
