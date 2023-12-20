@@ -60,17 +60,15 @@ mysqli_close($connexion);
     
     <body>
 
+        <span class="produit">Voici nos produits:</span>
+        <a href="sponsors.php" class="bouton-sponsors">Sponsors</a>
     
         <h1 class="ProfilT">Votre Profil :</h1>
         <h1 class="ProfilTXT">Nom : <?php echo $nom; ?> </h1>
         <h1 class="ProfilTXT">Prénom : <?php echo $prenom; ?></h1>
         <h1 class="ProfilTXT">Pseudonyme : <?php echo $pseudo; ?></h1>
         <h1 class="ProfilTXT">Mail : <?php echo $email; ?></h1>
-<<<<<<< HEAD
         
-=======
-
->>>>>>> b2b129bf5ab2ca3c1a0f0d72f8b7fc735186d457
     </body>
 
 </html>
